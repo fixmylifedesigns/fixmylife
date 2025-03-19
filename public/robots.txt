@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://fixmylife.app
+
+# Sitemaps
+Sitemap: https://fixmylife.app/sitemap.xml
+Sitemap: https://fixmylife.app/server-sitemap.xml

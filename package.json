@@ -2,13 +2,12 @@
   "name": "fixmylifeco",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_DISABLE_ESLINT=1 && prisma generate && next build",
+    "build": "prisma generate && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "echo 'Skipping ESLint' && exit 0"
+    "lint": "next lint"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",

@@ -465,18 +465,18 @@ export default function PostNowPremiumPage() {
 
   // Check authentication status
   useEffect(() => {
-    if (sessionStatus === "authenticated" && session) {
-      setIsAuthenticated(true);
-    } else if (sessionStatus === "unauthenticated") {
-      if (devMode) {
-        // In development, still allow using the app without auth
-        console.log("Development mode: proceeding without authentication");
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-        router.push("/login?redirect=post-now");
-      }
-    }
+    // if (sessionStatus === "authenticated" && session) {
+    //   setIsAuthenticated(true);
+    // } else if (sessionStatus === "unauthenticated") {
+    //   if (devMode) {
+    //     // In development, still allow using the app without auth
+    //     console.log("Development mode: proceeding without authentication");
+    //     setIsAuthenticated(true);
+    //   } else {
+    //     setIsAuthenticated(false);
+    //     router.push("/login?redirect=post-now");
+    //   }
+    // }
   }, [session, sessionStatus, router, devMode]);
 
   const handleChange = (e) => {
