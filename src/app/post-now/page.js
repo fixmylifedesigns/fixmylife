@@ -6,6 +6,7 @@ import axios from "axios";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
 import TikTokPreview from "@/components/TikTokPreview";
+// import FacebookPublisher from "@/components/FacebookPublisher";
 
 export default function PostNowPage() {
   const { data: session, status: sessionStatus } = useSession();
@@ -61,20 +62,20 @@ export default function PostNowPage() {
   ];
 
   // Check authentication status
-  // useEffect(() => {
-  //   if (sessionStatus === "authenticated" && session) {
-  //     setIsAuthenticated(true);
-  //   } else if (sessionStatus === "unauthenticated") {
-  //     if (devMode) {
-  //       // In development, still allow using the app without auth
-  //       console.log("Development mode: proceeding without authentication");
-  //       setIsAuthenticated(true);
-  //     } else {
-  //       setIsAuthenticated(false);
-  //       router.push("/login?redirect=post-now");
-  //     }
-  //   }
-  // }, [session, sessionStatus, router, devMode]);
+  useEffect(() => {
+    if (sessionStatus === "authenticated" && session) {
+      setIsAuthenticated(true);
+    } else if (sessionStatus === "unauthenticated") {
+      if (devMode) {
+        // In development, still allow using the app without auth
+        console.log("Development mode: proceeding without authentication");
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+        router.push("/login?redirect=post-now");
+      }
+    }
+  }, [session, sessionStatus, router, devMode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -552,7 +553,10 @@ export default function PostNowPage() {
                 </div>
 
                 {/* Right column - Form fields */}
-                <form  onSubmit={handleSubmit} className="md:col-span-1 space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="md:col-span-1 space-y-6"
+                >
                   {/* YouTube Title */}
                   <div>
                     <label
@@ -780,6 +784,11 @@ export default function PostNowPage() {
                     </button>
                   </div>
                 </form>
+                {/* <FacebookPublisher
+                  videoUrl={videoSource}
+                  videoTitle={formData.youtubeTitle}
+                  videoDescription={formData.youtubeDescription}
+                /> */}
               </div>
             )}
           </div>
@@ -985,7 +994,7 @@ export default function PostNowPage() {
       </div>
     );
   }
-
+  console.log(isPosting, isAuthenticated, videoSearched);
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
